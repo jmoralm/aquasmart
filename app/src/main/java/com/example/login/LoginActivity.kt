@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
                 intent = Intent(this, MainActivity::class.java)
                 intent.apply {
-                    putExtra("userName", userName)
+                    putExtra("username", "Jose Morillo")
                 }
                 startActivity(intent)
             }

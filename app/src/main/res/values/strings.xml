@@ -5,4 +5,6 @@
     <string name="button_text_login">Login</string>
     <string name="inputText_hint_Text_password">Password</string>
     <string name="inputText_Hint_username">Username</string>
+    <string name="call_cardView_button">Call</string>
+    <string name="email_cardview_button">Email</string>
 </resources>
