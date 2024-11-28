@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.login"
+    namespace = "com.example.aquasmart"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.login"
-        minSdk = 33
+        applicationId = "com.example.aquasmart"
+        minSdk = 27
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -46,7 +46,10 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation (libs.glide)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.ui.text.google.fonts)
+
 }

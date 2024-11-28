@@ -6,6 +6,8 @@
         <item name="android:height">56dp</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textAlignment">center</item>
+        <item name="colorContainer">@color/tertiary_color</item>
+        <item name="backgroundTint">@color/primary_color</item>
     </style>
 
     <style name="aquasmart_body_text">
@@ -26,6 +28,8 @@
         <item name="fontFamily">@font/ibm_plex_sans</item>
         <item name="android:textSize">20sp</item>
         <item name="rippleColor">@color/black</item>
+        <item name="colorContainer">@color/tertiary_color</item>
+        <item name="color">@color/tertiary_color</item>
 
     </style>
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">Aquasmart</string>
     <string name="login_title_text">Login</string>
     <string name="login_description_text">Ingrese sus datos para acceder a la aplicación</string>
     <string name="button_text_login">Login</string>
