@@ -7,4 +7,6 @@
     <string name="inputText_Hint_username">Username</string>
     <string name="call_cardView_button">Call</string>
     <string name="email_cardview_button">Email</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

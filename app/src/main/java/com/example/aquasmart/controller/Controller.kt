@@ -32,7 +32,16 @@ class Controller(private val context: Context) {
         adapter = AdapterReports(listReports,
             { position ->
                 deleteReport(position)
-            })
+            },
+
+            { position ->
+                updateReport(position)
+            }
+        )
+    }
+
+    private fun updateReport(pos: Int) {
+
     }
 
     /**
@@ -52,5 +61,8 @@ class Controller(private val context: Context) {
         adapter.notifyItemRemoved(position)
         adapter.notifyItemRangeChanged(position, listReports.size)
     }
+
+
+
 
 }

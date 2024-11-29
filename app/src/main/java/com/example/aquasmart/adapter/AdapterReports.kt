@@ -12,7 +12,8 @@ import com.example.aquasmart.databinding.ItemReportBinding
 class AdapterReports(
 
     var listReports: MutableList<Reports>,
-    var deleteOnClick: (Int) -> Unit
+    var deleteOnClick: (Int) -> Unit,
+    var updateOnClick: (Int) -> Unit
 
 ) : RecyclerView.Adapter<ViewHolderReports>() {
 
@@ -26,7 +27,7 @@ class AdapterReports(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderReports {
 
         val binding = ItemReportBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolderReports(binding, deleteOnClick)
+        return ViewHolderReports(binding, deleteOnClick, updateOnClick)
     }
 
     /**

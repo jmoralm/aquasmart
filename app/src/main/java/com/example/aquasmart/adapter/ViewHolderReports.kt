@@ -12,7 +12,8 @@ import com.example.aquasmart.databinding.ItemReportBinding
 class ViewHolderReports(
 
     private val binding: ItemReportBinding,
-    val deleteOnClick: (Int) -> Unit
+    val deleteOnClick: (Int) -> Unit,
+    val updateOnClick: (Int) -> Unit
 
 ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -37,6 +38,9 @@ class ViewHolderReports(
 
         binding.floatButtonDelete.setOnClickListener {
             deleteOnClick(adapterPosition)
+        }
+        binding.floatButtonEdit.setOnClickListener {
+            updateOnClick(adapterPosition)
         }
     }
 }
