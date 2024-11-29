@@ -3,6 +3,9 @@ package com.example.aquasmart.repository
 import com.example.aquasmart.models.Reports
 import java.time.LocalDate
 
+/**
+ * Objeto repositorio que contiene una lista de objetos Reports.
+ */
 object Repository {
 
     val listReports: List<Reports> = listOf(

@@ -5,6 +5,10 @@ import com.bumptech.glide.Glide
 import com.example.aquasmart.models.Reports
 import com.example.aquasmart.databinding.ItemReportBinding
 
+/**
+ * Clase ViewHolderReports que extiende RecyclerView.ViewHolder y se utiliza
+ * para manejar la visualización de elementos en una lista de reportes.
+ */
 class ViewHolderReports(
 
     private val binding: ItemReportBinding,
@@ -12,6 +16,11 @@ class ViewHolderReports(
 
 ) : RecyclerView.ViewHolder(binding.root) {
 
+    /**
+     * Renderiza un elemento del tipo Reports en el ViewHolder.
+     *
+     * @param report Objeto Reports que contiene la información del reporte.
+     */
     fun render(report: Reports) {
 
         binding.textViewTitle.text = report.name

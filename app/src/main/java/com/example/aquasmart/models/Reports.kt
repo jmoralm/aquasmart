@@ -2,6 +2,10 @@ package com.example.aquasmart.models
 
 import java.time.LocalDate
 
+/**
+ * Data class Reports con los atributos de la clase
+ *
+ */
 data class Reports(
     var name: String,
     var clientName: String,

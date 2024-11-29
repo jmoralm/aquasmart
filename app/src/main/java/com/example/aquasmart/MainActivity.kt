@@ -12,7 +12,7 @@ import com.example.aquasmart.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var controller : Controller
+    private lateinit var controller: Controller
     lateinit var binding: ActivityMainBinding
 
 
