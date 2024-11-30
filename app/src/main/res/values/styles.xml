@@ -33,5 +33,15 @@
 
     </style>
 
+    <style name="aquasmart_input_text_second" parent="Widget.Material3.TextInputLayout.FilledBox.Dense">
+        <item name="android:fontFamily">@font/ibm_plex_sans</item>
+        <item name="fontFamily">@font/ibm_plex_sans</item>
+        <item name="android:textSize">20sp</item>
+        <item name="rippleColor">@color/black</item>
+        <item name="colorContainer">@color/tertiary_color</item>
+        <item name="color">@color/tertiary_color</item>
+
+    </style>
+
 
 </resources>
