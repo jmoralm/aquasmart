@@ -9,7 +9,7 @@ import java.time.LocalDate
 data class Reports(
     var name: String,
     var clientName: String,
-    var date: LocalDate,
+    var date: String,
     var description: String,
     var image: String
 

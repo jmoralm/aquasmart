@@ -1,9 +1,11 @@
 package com.example.aquasmart.controller
 
 import android.content.Context
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aquasmart.adapter.AdapterReports
 import com.example.aquasmart.MainActivity
 import com.example.aquasmart.dao.ReportsDaoImpl
+import com.example.aquasmart.dialog.DialogEditReport
 import com.example.aquasmart.models.Reports
 
 /**
@@ -16,6 +18,7 @@ class Controller(private val context: Context) {
 
     private lateinit var listReports: MutableList<Reports>
     private lateinit var adapter: AdapterReports
+    private lateinit var layoutManager: LinearLayoutManager
 
     init {
         initData()
@@ -29,19 +32,36 @@ class Controller(private val context: Context) {
 
         listReports = ReportsDaoImpl.myDao.getReports().toMutableList()
 
+        layoutManager =
+            ((context as MainActivity).binding.rvReports.layoutManager as LinearLayoutManager)
+
         adapter = AdapterReports(listReports,
             { position ->
                 deleteReport(position)
             },
-
             { position ->
                 updateReport(position)
-            }
-        )
+            })
     }
 
     private fun updateReport(pos: Int) {
 
+        val editDialog = DialogEditReport(listReports[pos])
+
+        { editReport ->
+            onEditReport(editReport, pos)
+        }
+
+        val myActivity = context as MainActivity
+        editDialog.show(myActivity.supportFragmentManager, "Editamos un Reporte")
+    }
+
+    private fun onEditReport(editReport: Reports, pos: Int) {
+        listReports.removeAt(pos)
+        adapter.notifyItemRemoved(pos)
+        listReports.add(pos, editReport)
+        adapter.notifyItemInserted(pos)
+        layoutManager.scrollToPositionWithOffset(pos, 20)
     }
 
     /**
@@ -61,8 +81,6 @@ class Controller(private val context: Context) {
         adapter.notifyItemRemoved(position)
         adapter.notifyItemRangeChanged(position, listReports.size)
     }
-
-
 
 
 }

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/et_report_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <EditText
-            android:id="@+id/editText_name"
+            android:id="@+id/et_client_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -65,9 +65,9 @@
             android:gravity="start|top"
             android:hint="Description"
             android:inputType="textMultiLine"
-            app:layout_constraintEnd_toEndOf="@+id/editTextText"
-            app:layout_constraintStart_toStartOf="@+id/editTextText"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+            app:layout_constraintEnd_toEndOf="@+id/et_report_name"
+            app:layout_constraintStart_toStartOf="@+id/et_report_name"
+            app:layout_constraintTop_toBottomOf="@+id/et_report_name" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -77,6 +77,19 @@
             android:background="@color/dark_color_black"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/tv_imageUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/et_report_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
