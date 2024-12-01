@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         controller = Controller(this)
         controller.setAdapter()
+
     }
 
     /*

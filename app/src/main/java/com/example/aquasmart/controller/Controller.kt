@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aquasmart.adapter.AdapterReports
 import com.example.aquasmart.MainActivity
 import com.example.aquasmart.dao.ReportsDaoImpl
+import com.example.aquasmart.dialog.DialogAddReport
 import com.example.aquasmart.dialog.DialogEditReport
 import com.example.aquasmart.models.Reports
 
@@ -42,6 +43,9 @@ class Controller(private val context: Context) {
             { position ->
                 updateReport(position)
             })
+
+        initClickListener()
+
     }
 
     private fun updateReport(pos: Int) {
@@ -62,6 +66,28 @@ class Controller(private val context: Context) {
         listReports.add(pos, editReport)
         adapter.notifyItemInserted(pos)
         layoutManager.scrollToPositionWithOffset(pos, 20)
+    }
+
+    private fun onAddReport(newReport: Reports) {
+        listReports.add(listReports.size, newReport)
+        adapter.notifyItemInserted(listReports.lastIndex)
+        layoutManager.scrollToPositionWithOffset(listReports.lastIndex, 20)
+    }
+
+    private fun initClickListener() {
+        val myActivity = context as MainActivity
+        myActivity.binding.fabAddReport.setOnClickListener {
+            addHotel()
+        }
+    }
+
+    private fun addHotel() {
+        val dialog = DialogAddReport() {
+            report -> onAddReport(report)
+        }
+
+        val myActivity = context as MainActivity
+        dialog.show(myActivity.supportFragmentManager,"Añadir Hotel")
     }
 
     /**
