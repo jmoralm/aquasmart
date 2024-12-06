@@ -19,6 +19,7 @@ class DialogEditReport(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
+        //
         val inflater = requireActivity().layoutInflater
         val viewDialogEditReport = inflater.inflate(R.layout.edit_report, null)
         val binding = EditReportBinding.bind(viewDialogEditReport)

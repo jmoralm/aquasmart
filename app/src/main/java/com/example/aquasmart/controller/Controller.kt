@@ -2,10 +2,11 @@ package com.example.aquasmart.controller
 
 import android.content.Context
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.aquasmart.adapter.AdapterReports
 import com.example.aquasmart.MainActivity
+import com.example.aquasmart.adapter.AdapterReports
 import com.example.aquasmart.dao.ReportsDaoImpl
 import com.example.aquasmart.dialog.DialogAddReport
+import com.example.aquasmart.dialog.DialogDeleteReport
 import com.example.aquasmart.dialog.DialogEditReport
 import com.example.aquasmart.models.Reports
 
@@ -23,6 +24,7 @@ class Controller(private val context: Context) {
 
     init {
         initData()
+        initClickListener()
     }
 
     /**
@@ -44,8 +46,6 @@ class Controller(private val context: Context) {
                 updateReport(position)
             })
 
-        initClickListener()
-
     }
 
     private fun updateReport(pos: Int) {
@@ -60,12 +60,23 @@ class Controller(private val context: Context) {
         editDialog.show(myActivity.supportFragmentManager, "Editamos un Reporte")
     }
 
+    private fun deleteReport(pos: Int) {
+        val deleteDialog = DialogDeleteReport(listReports[pos])
+
+        { _ ->
+            onDeleteReport(pos)
+        }
+
+        val myActivity = context as MainActivity
+        deleteDialog.show(myActivity.supportFragmentManager, "Borramos un Reporte")
+    }
+
     private fun onEditReport(editReport: Reports, pos: Int) {
         listReports.removeAt(pos)
         adapter.notifyItemRemoved(pos)
         listReports.add(pos, editReport)
         adapter.notifyItemInserted(pos)
-        layoutManager.scrollToPositionWithOffset(pos, 20)
+        layoutManager.scrollToPositionWithOffset(pos, listReports.size - 1)
     }
 
     private fun onAddReport(newReport: Reports) {
@@ -73,6 +84,17 @@ class Controller(private val context: Context) {
         adapter.notifyItemInserted(listReports.lastIndex)
         layoutManager.scrollToPositionWithOffset(listReports.lastIndex, 20)
     }
+
+    /**
+     * Método para borrar un Reporte.
+     * También notifica de que un item ha sido eliminado.
+     */
+    private fun onDeleteReport(position: Int) {
+        listReports.removeAt(position)
+        adapter.notifyItemRemoved(position)
+        adapter.notifyItemRangeChanged(position, listReports.size)
+    }
+
 
     private fun initClickListener() {
         val myActivity = context as MainActivity
@@ -82,12 +104,12 @@ class Controller(private val context: Context) {
     }
 
     private fun addHotel() {
-        val dialog = DialogAddReport() {
-            report -> onAddReport(report)
+        val dialog = DialogAddReport() { report ->
+            onAddReport(report)
         }
 
         val myActivity = context as MainActivity
-        dialog.show(myActivity.supportFragmentManager,"Añadir Hotel")
+        dialog.show(myActivity.supportFragmentManager, "Añadir Hotel")
     }
 
     /**
@@ -96,16 +118,6 @@ class Controller(private val context: Context) {
     fun setAdapter() {
         val myActivity = context as MainActivity
         myActivity.binding.rvReports.adapter = adapter
-    }
-
-    /**
-     * Método para borrar un Reporte.
-     * También notifica de que un item ha sido eliminado.
-     */
-    private fun deleteReport(position: Int) {
-        listReports.removeAt(position)
-        adapter.notifyItemRemoved(position)
-        adapter.notifyItemRangeChanged(position, listReports.size)
     }
 
 
