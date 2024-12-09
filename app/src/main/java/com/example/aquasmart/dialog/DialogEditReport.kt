@@ -3,11 +3,12 @@ package com.example.aquasmart.dialog
 import android.app.Dialog
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.aquasmart.R
 import com.example.aquasmart.databinding.EditReportBinding
 import com.example.aquasmart.models.Reports
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.datepicker.MaterialDatePicker
 
 
 class DialogEditReport(
@@ -15,7 +16,7 @@ class DialogEditReport(
     val updateReportDialog: (Reports) -> Unit
 ) : DialogFragment() {
 
-    private lateinit var imageReport : String
+    private lateinit var imageReport: String
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -24,10 +25,12 @@ class DialogEditReport(
         val viewDialogEditReport = inflater.inflate(R.layout.edit_report, null)
         val binding = EditReportBinding.bind(viewDialogEditReport)
 
+        datePickerInit(binding)
         // Configurar datos iniciales
         setValuesIntoDialog(binding)
 
-        return MaterialAlertDialogBuilder(requireActivity())
+
+        val dialog = AlertDialog.Builder(requireActivity())
             .setView(viewDialogEditReport)
             .setTitle("Editar Informe")
             .setMessage("Edite su informe y guarde los cambios")
@@ -37,8 +40,7 @@ class DialogEditReport(
                 if (updatedReport.name.isEmpty() ||
                     updatedReport.clientName.isEmpty() ||
                     updatedReport.date.isEmpty() ||
-                    updatedReport.description.isEmpty() ||
-                    updatedReport.image.isEmpty()
+                    updatedReport.description.isEmpty()
                 ) {
                     Toast.makeText(requireContext(), "Algún campo está vacío", Toast.LENGTH_LONG)
                         .show()
@@ -49,6 +51,9 @@ class DialogEditReport(
             }
             .setNegativeButton("Cancelar") { _, _ -> dismiss() }
             .create()
+
+        return dialog
+
     }
 
     private fun setValuesIntoDialog(binding: EditReportBinding) {
@@ -60,6 +65,7 @@ class DialogEditReport(
     }
 
     private fun recoverDataLayout(binding: EditReportBinding): Reports {
+
         return Reports(
             name = binding.etReportName.text.toString().ifEmpty { "" },
             clientName = binding.etClientName.text.toString().ifEmpty { "" },
@@ -67,5 +73,21 @@ class DialogEditReport(
             description = binding.editTextMultiDescription.text.toString().ifEmpty { "" },
             image = imageReport
         )
+    }
+
+    private fun datePickerInit(binding: EditReportBinding) {
+
+        binding.editTextDate.setOnClickListener {
+            val datePicker =
+                MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Select a date")
+                    .build()
+            datePicker.show(parentFragmentManager, "Date_Picker")
+
+            datePicker.addOnPositiveButtonClickListener {
+                binding.editTextDate.setText(datePicker.headerText)
+            }
+
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.aquasmart.dialog
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
@@ -26,9 +27,11 @@ class DialogDeleteReport(
         // Configurar datos iniciales
         setValuesIntoDialog(binding)
 
-        return MaterialAlertDialogBuilder(requireActivity()).setView(viewDialogEditReport)
-            .setTitle("Borrar Informe").setMessage("¿Desea borrar este reporte?")
-            .setIcon(R.drawable.baseline_delete_outline_24).setPositiveButton("Aceptar") { _, _ ->
+        return AlertDialog.Builder(requireActivity()).setView(viewDialogEditReport)
+            .setTitle("Borrar Informe")
+            .setMessage("¿Desea borrar este reporte?")
+            .setIcon(R.drawable.baseline_delete_outline_24)
+            .setPositiveButton("Aceptar") { _, _ ->
 
                 deleteReportDialog(reportToDelete)
                 dismiss() // Cierra el diálogo al aceptar

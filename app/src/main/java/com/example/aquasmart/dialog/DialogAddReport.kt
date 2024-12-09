@@ -1,6 +1,8 @@
 package com.example.aquasmart.dialog
 
+import android.app.AlertDialog
 import android.app.Dialog
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -8,7 +10,10 @@ import com.example.aquasmart.R
 import com.example.aquasmart.databinding.AddReportBinding
 import com.example.aquasmart.databinding.EditReportBinding
 import com.example.aquasmart.models.Reports
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import java.util.Calendar
+import java.util.Date
 
 
 class DialogAddReport(
@@ -21,7 +26,9 @@ class DialogAddReport(
         val viewDialogAddReport = inflater.inflate(R.layout.add_report, null)
         val binding = AddReportBinding.bind(viewDialogAddReport)
 
-        return MaterialAlertDialogBuilder(requireActivity())
+        datePickerInit(binding)
+
+        return AlertDialog.Builder(requireActivity())
             .setView(viewDialogAddReport)
             .setTitle("Agregar Informe")
             .setMessage("Agregue un nuevo informe")
@@ -43,6 +50,22 @@ class DialogAddReport(
             }
             .setNegativeButton("Cancelar") { _, _ -> dismiss() }
             .create()
+    }
+
+    private fun datePickerInit(binding: AddReportBinding) {
+
+        binding.editTextDate.setOnClickListener {
+            val datePicker =
+                MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Select date")
+                    .build()
+            datePicker.show(parentFragmentManager, "Date_Picker")
+
+            datePicker.addOnPositiveButtonClickListener {
+                binding.editTextDate.setText(datePicker.headerText)
+            }
+
+        }
     }
 
     private fun recoverDataLayout(binding: AddReportBinding): Reports {

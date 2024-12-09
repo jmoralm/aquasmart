@@ -63,18 +63,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
             app:boxStrokeColor="@color/primary_color"
-            app:hintTextColor="@color/primary_color">
+            app:endIconDrawable="@drawable/baseline_add_24"
+            app:hintTextColor="@color/primary_color"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_date"
                 style="@style/aquasmart_input_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:hint="Report Date"
-                android:inputType="date" />
+                android:hint="Select a Date"
+                android:focusable="false"
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -114,6 +115,7 @@
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

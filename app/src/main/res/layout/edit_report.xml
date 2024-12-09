@@ -8,12 +8,12 @@
     tools:context=".dialog.DialogEditReport">
 
     <LinearLayout
+        style="@style/ShapeAppearanceOverlay.MaterialAlertDialog.Material3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:orientation="vertical"
         android:padding="16dp"
-        style="@style/ShapeAppearanceOverlay.MaterialAlertDialog.Material3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,11 +23,11 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
+            android:layout_marginBottom="16dp"
             app:boxStrokeColor="@color/primary_color"
-            app:hintTextColor="@color/primary_color">
+            app:hintTextColor="@color/primary_color"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_report_name"
@@ -45,9 +45,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
             app:boxStrokeColor="@color/primary_color"
-            app:hintTextColor="@color/primary_color">
+            app:hintTextColor="@color/primary_color"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_client_name"
@@ -63,27 +63,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
             app:boxStrokeColor="@color/primary_color"
-            app:hintTextColor="@color/primary_color">
+            app:hintTextColor="@color/primary_color"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_date"
                 style="@style/aquasmart_input_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:focusable="false"
+                android:hint="Select a Date"
                 android:imeOptions="actionDone"
-                android:hint="Report Date"
-                android:inputType="date" />
+                android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
             app:boxStrokeColor="@color/primary_color"
-            app:hintTextColor="@color/primary_color">
+            app:hintTextColor="@color/primary_color"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_multi_description"
