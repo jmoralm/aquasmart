@@ -1,4 +1,4 @@
-# AquaSmart
+**# AquaSmart
 
 | Autor      | José Morillo Almazán |
 |------------|----------------------|
@@ -6,6 +6,74 @@
 | Curso      | 2º DAM (A)           |
 
 ---
+
+## Version 1.2. Descripción General
+
+La aplicación `AquaSmart` se ha actualizado a la versión 1.2.
+En esta versión se han añadido Dialogos para realizar las operaciones de 
+**`Añadir`**, **`Editar`** y **`Borrar`** un reporte. 
+
+### 1. Añadir un Reporte
+
+Se ha incluido un `Floating Button` en la esquina inferior derecha de la pantalla principal de la aplicación.
+Se ha implementado la funcionalidad de añadir un Reporte, al hacer click en el botón se abre un diálogo para tal efecto.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="img%2Ffab_add.png" alt="RecyclerView Aquasmart" width="300px">
+</p>
+</div>**
+
+En el Diálogo para añadir un reporte se introducen los datos necesarios para la creación del mismo. 
+Es necesario que el usuario introduzca todos los datos.
+
+
+>_En versiones posteriores se incluirá la funcionalidad para agregar fotos desde la galería del usuario._
+
+<div>
+<p style = 'text-align:center;'>
+<img src="img%2FaddReport.png" alt="RecyclerView Aquasmart" width="300px">
+</p>
+</div>
+
+Para la selección de la fecha, se ha implementado un DatePicker.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="img%2FdatePicker.png" alt="RecyclerView Aquasmart" width="300px">
+</p>
+</div>
+
+### 2. Editar un Reporte
+
+El Diálogo de editar reporte es el mismo que para añadir con la diferencia 
+de que el diálogo muestra los datos del reporte a editar en los campos correspondientes.
+
+<div>
+<p style = 'text-align:center;'>
+<img src="img%2FeditReport.png" alt="RecyclerView Aquasmart" width="300px">
+</p>
+</div>
+
+### 3. Borrar un Reporte
+
+El Diálogo de borrar reporte es el mismo que para editar con la diferencia
+de que el diálogo muestra los datos del reporte que se pretende eliminar, 
+pero en este caso, los campos están deshabilitados. 
+
+<div>
+<p style = 'text-align:center;'>
+<img src="img%2FdeleteReport.png" alt="RecyclerView Aquasmart" width="300px">
+</p>
+</div>
+
+Antes de borrar el reporte, el usuario puede comprobar que los datos 
+y el reporte son, efectivamente, los que se pretenden borrar. 
+Se añade así, una capa de seguridad extra en la operación de eliminación de los datos,
+para evitar posibles acciones no deseadas por parte del usuario. 
+
+
+--- 
 
 ## Versión 1.1. Descripción General
 
@@ -185,5 +253,4 @@ El método setAdapter() conecta el adaptador al RecyclerView definido en el Main
 
 3. `Interacción del Usuario:`
 El usuario puede eliminar reportes. Esta acción activa el deleteOnClick definido en el AdapterReports, que llama al método deleteReport() en el Controller.
-
 
