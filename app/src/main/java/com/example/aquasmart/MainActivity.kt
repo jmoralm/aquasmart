@@ -9,12 +9,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.aquasmart.controller.Controller
 import com.example.aquasmart.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var controller: Controller
     lateinit var binding: ActivityMainBinding
-
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +28,26 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        initRecyclerView()
-        init()
+        auth = FirebaseAuth.getInstance()
+
+        // Verifica si hay una sesión iniciada en SharedPreferences
+        val sharedPreferences = getSharedPreferences("session_prefs", MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getBoolean("is_logged_in", false)
+
+        // Verifica si el usuario está autenticado
+        val currentUser = auth.currentUser
+
+        if (currentUser != null && currentUser.isEmailVerified && isLoggedIn) {
+            // Usuario autenticado y sesión iniciada, inicia la UI principal
+            initRecyclerView()
+            init()
+
+        } else {
+            // No hay usuario autenticado o sesión no iniciada, redirige a LoginActivity
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 

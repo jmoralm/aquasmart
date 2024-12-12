@@ -1,4 +1,4 @@
-**# AquaSmart
+# AquaSmart
 
 | Autor      | José Morillo Almazán |
 |------------|----------------------|
@@ -10,8 +10,8 @@
 ## Version 1.2. Descripción General
 
 La aplicación `AquaSmart` se ha actualizado a la versión 1.2.
-En esta versión se han añadido Dialogos para realizar las operaciones de 
-**`Añadir`**, **`Editar`** y **`Borrar`** un reporte. 
+En esta versión se han añadido Dialogos para realizar las operaciones de
+**`Añadir`**, **`Editar`** y **`Borrar`** un reporte.
 
 ### 1. Añadir un Reporte
 
@@ -24,9 +24,8 @@ Se ha implementado la funcionalidad de añadir un Reporte, al hacer click en el 
 </p>
 </div>**
 
-En el Diálogo para añadir un reporte se introducen los datos necesarios para la creación del mismo. 
+En el Diálogo para añadir un reporte se introducen los datos necesarios para la creación del mismo.
 Es necesario que el usuario introduzca todos los datos.
-
 
 >_En versiones posteriores se incluirá la funcionalidad para agregar fotos desde la galería del usuario._
 
@@ -46,7 +45,7 @@ Para la selección de la fecha, se ha implementado un DatePicker.
 
 ### 2. Editar un Reporte
 
-El Diálogo de editar reporte es el mismo que para añadir con la diferencia 
+El Diálogo de editar reporte es el mismo que para añadir con la diferencia
 de que el diálogo muestra los datos del reporte a editar en los campos correspondientes.
 
 <div>
@@ -58,8 +57,8 @@ de que el diálogo muestra los datos del reporte a editar en los campos correspo
 ### 3. Borrar un Reporte
 
 El Diálogo de borrar reporte es el mismo que para editar con la diferencia
-de que el diálogo muestra los datos del reporte que se pretende eliminar, 
-pero en este caso, los campos están deshabilitados. 
+de que el diálogo muestra los datos del reporte que se pretende eliminar,
+pero en este caso, los campos están deshabilitados.
 
 <div>
 <p style = 'text-align:center;'>
@@ -67,26 +66,22 @@ pero en este caso, los campos están deshabilitados.
 </p>
 </div>
 
-Antes de borrar el reporte, el usuario puede comprobar que los datos 
-y el reporte son, efectivamente, los que se pretenden borrar. 
+Antes de borrar el reporte, el usuario puede comprobar que los datos
+y el reporte son, efectivamente, los que se pretenden borrar.
 Se añade así, una capa de seguridad extra en la operación de eliminación de los datos,
-para evitar posibles acciones no deseadas por parte del usuario. 
+para evitar posibles acciones no deseadas por parte del usuario.
 
-
---- 
+---
 
 ## Versión 1.1. Descripción General
 
-La aplicación utiliza un `RecyclerView` para mostrar una lista de reportes. La arquitectura se basa en un **Controller**, un **Adapter**, y un **ViewHolder** para gestionar la interacción y visualización de los datos. 
-
+La aplicación utiliza un `RecyclerView` para mostrar una lista de reportes. La arquitectura se basa en un **Controller**, un **Adapter**, y un **ViewHolder** para gestionar la interacción y visualización de los datos.
 
 <div>
 <p style = 'text-align:center;'>
 <img src="img%2FScreenshot_20241128_204303.png" alt="RecyclerView Aquasmart" width="300px">
 </p>
 </div>
-
-
 
 ### Principales Componentes
 
@@ -160,7 +155,7 @@ Esta clase gestiona la lógica principal de la aplicación. Su objetivo es inici
   Asigna el adaptador al `RecyclerView` asociado a la vista principal.  
 
 - **`deleteReport(position: Int)`**  
-- 
+-
   Elimina un reporte de la lista en una posición específica y actualiza el adaptador para reflejar los cambios.  
 
   **Nota**: Este método también notifica al adaptador sobre el cambio en el rango de los datos.
@@ -209,8 +204,6 @@ override fun onBindViewHolder(holder: ViewHolderReports, position: Int) {
     }
 ```
 
-
-
 ### Clase `ViewHolderReports`
 
 #### Descripción
@@ -253,4 +246,3 @@ El método setAdapter() conecta el adaptador al RecyclerView definido en el Main
 
 3. `Interacción del Usuario:`
 El usuario puede eliminar reportes. Esta acción activa el deleteOnClick definido en el AdapterReports, que llama al método deleteReport() en el Controller.
-

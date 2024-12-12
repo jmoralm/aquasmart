@@ -8,6 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.aquasmart.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 /**
  * Clase LoginActivity que representa la pantalla de inicio de sesión
@@ -19,14 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var userName: String
     private lateinit var password: String
     private lateinit var intent: Intent
-
-    /**
-     * Constantes de inicio de sesión predeterminado
-     */
-    companion object {
-        const val USERNAME = "josemorillo"
-        const val PASSWORD = "admin"
-    }
+    private lateinit var auth : FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -42,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        auth = Firebase.auth
         initEvent()
 
     }
@@ -56,59 +55,47 @@ class LoginActivity : AppCompatActivity() {
             userName = binding.textInputUsername.text.toString()
             password = binding.textInputPassword.text.toString()
 
-            if (userName.isEmpty() || password.isEmpty() || userName.isBlank() || userName.isBlank()) {
-                showMsg("Missing data")
+            if (userName.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Por favor, ingrese email y contraseña", Toast.LENGTH_SHORT).show()
             }
-            if (loginVerify(userName, password)) {
 
-                intent = Intent(this, MainActivity::class.java)
-                intent.apply {
-                    putExtra("username", "Jose Morillo")
+            auth.signInWithEmailAndPassword(userName, password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    if (user?.isEmailVerified == true) {
+                        // Almacena el estado de la sesión en SharedPreferences
+                        val sharedPreferences = getSharedPreferences("session_prefs", MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putBoolean("is_logged_in", true)
+                        editor.apply()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        auth.signOut()
+                        Toast.makeText(this, "Por favor, verifique su correo electrónico", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    var message = "Error desconocido"
+                    try {
+                        throw task.exception ?: Exception("Error desconocido")
+                    } catch (e: FirebaseAuthInvalidUserException) {
+                        message = "El usuario no existe o ha sido deshabilitado"
+                    } catch (e: FirebaseAuthInvalidCredentialsException) {
+                        message = "Contraseña incorrecta"
+                    } catch (e: Exception) {
+                        message = e.message.toString()
+                    }
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }
-                startActivity(intent)
             }
-
         }
-    }
 
-    /**
-     * Verifica si las credenciales ingresadas son correctas.
-     *
-     * @param userName Nombre de usuario ingresado.
-     * @param password Contraseña ingresada.
-     * @return `true` si las credenciales son válidas, de lo contrario `false`.
-     */
-    private fun loginVerify(userName: String, password: String): Boolean {
-        return userNameVerify(userName) && password == PASSWORD
-    }
-
-    /**
-     * Verifica si el nombre de usuario ingresado es válido.
-     *
-     * @param userName Nombre de usuario ingresado.
-     * @return `true` si el nombre de usuario coincide con el predeterminado, de lo contrario `false`.
-     */
-    private fun userNameVerify(userName: String): Boolean {
-        if (userName == USERNAME) {
-            return true
-        } else {
-            showMsg("Username is not valid")
-            return false
-        }
-    }
-
-    /**
-     * Verifica si la contraseña ingresada es válida.
-     *
-     * @param password Contraseña ingresada.
-     * @return `true` si la contraseña coincide con la predeterminada, de lo contrario `false`.
-     */
-    private fun passwordVerify(password: String): Boolean {
-        if (password == PASSWORD) {
-            return true
-        } else {
-            showMsg("Password is not valid")
-            return false
+        binding.tvLinkCrearCuenta.setOnClickListener {
+            intent = Intent(this, RegisterActivity::class.java )
+            startActivity(intent)
         }
     }
 

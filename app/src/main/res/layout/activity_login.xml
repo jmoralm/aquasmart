@@ -93,6 +93,29 @@
                 android:layout_margin="32dp"
                 android:text="@string/button_text_login" />
 
+            <TextView
+                android:id="@+id/tv_noCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿No tienes cuenta?"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/tv_linkCrearCuenta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear cuenta"
+                android:textAlignment="center"
+                style="@style/TextAppearance.Material3.TitleSmall"/>
+
+            <TextView
+                android:id="@+id/tv_olvidoContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="He olvidado la contraseña"
+                android:textAlignment="center"/>
+
         </LinearLayout>
 
     </LinearLayout>

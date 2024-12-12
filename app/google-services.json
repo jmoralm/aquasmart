@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "54564272777",
+    "project_id": "aquasmart-5dbed",
+    "storage_bucket": "aquasmart-5dbed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54564272777:android:5c385ce0164efafc3a6458",
+        "android_client_info": {
+          "package_name": "com.example.aquasmart"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7tOXsolBzvP8TBRUuOQNHGnEal-e8mFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
