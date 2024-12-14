@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         controller = Controller(this)
         controller.setAdapter()
+        loggout()
 
     }
 
@@ -71,5 +72,19 @@ class MainActivity : AppCompatActivity() {
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
+    }
+
+    private fun loggout(){
+        binding.fabLoggout.setOnClickListener {
+
+            val sharedPreferences = getSharedPreferences("session_prefs", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("is_logged_in", false)
+            editor.apply()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 }

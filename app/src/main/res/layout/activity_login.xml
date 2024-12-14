@@ -61,9 +61,9 @@
                     style="@style/aquasmart_input_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/inputText_Hint_username"
+                    android:hint="Email"
                     android:imeOptions="actionDone"
-                    android:inputType="textPersonName" />
+                    android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:text="Crear cuenta"
                 android:textAlignment="center"
-                style="@style/TextAppearance.Material3.TitleSmall"/>
+                android:textColor="@color/primary_color"
+                style="@style/TextAppearance.Material3.TitleMedium"/>
 
             <TextView
                 android:id="@+id/tv_olvidoContrasena"
@@ -114,7 +115,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="He olvidado la contraseña"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                android:textColor="@color/primary_color"
+                style="@style/TextAppearance.Material3.TitleMedium"/>
 
         </LinearLayout>
 

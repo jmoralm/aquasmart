@@ -50,6 +50,10 @@ class LoginActivity : AppCompatActivity() {
      */
     private fun initEvent() {
 
+        binding.tvOlvidoContrasena.setOnClickListener {
+            resetPassword()
+        }
+
         binding.buttonLogin.setOnClickListener {
 
             userName = binding.textInputUsername.text.toString()
@@ -105,4 +109,33 @@ class LoginActivity : AppCompatActivity() {
      * @param message Mensaje a mostrar.
      */
     private fun showMsg(message: String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
+    /**
+     * Método para resetear el password
+     */
+    private fun resetPassword() {
+
+        val email = binding.textInputUsername.text.toString()
+
+        if (email.isEmpty()) {
+            Toast.makeText(this, "Escriba su Email", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(this, "Hemos enviado un correo de recuperación, revise su bandeja de entrada", Toast.LENGTH_SHORT).show()
+            } else {
+                var message = "Error desconocido"
+                try {
+                    throw task.exception ?: Exception("Error desconocido")
+                } catch (e: FirebaseAuthInvalidCredentialsException) {
+                    message = "Formato de email incorrecto"
+                } catch (e: Exception) {
+                    message = e.message.toString()
+                }
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }

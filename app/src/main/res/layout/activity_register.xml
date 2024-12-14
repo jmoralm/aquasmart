@@ -112,27 +112,20 @@
                     android:text="Register Account" />
 
                 <TextView
-                    android:id="@+id/tv_noCuenta"
+                    android:id="@+id/tv_Cuenta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="¿No tienes cuenta?"
+                    android:text="¿Ya tiene una cuenta?"
                     android:textAlignment="center"/>
 
                 <TextView
-                    android:id="@+id/tv_linkCrearCuenta"
+                    android:id="@+id/tv_linkIniciarSesion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Crear cuenta"
+                    android:text="Iniciar Sesión"
                     android:textAlignment="center"
-                    style="@style/TextAppearance.Material3.TitleSmall"/>
-
-                <TextView
-                    android:id="@+id/tv_olvidoContrasena"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="He olvidado la contraseña"
-                    android:textAlignment="center"/>
+                    style="@style/TextAppearance.Material3.TitleMedium"
+                    android:textColor="@color/primary_color" />
 
             </LinearLayout>
 

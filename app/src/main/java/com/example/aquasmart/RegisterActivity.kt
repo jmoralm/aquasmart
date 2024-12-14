@@ -54,6 +54,8 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         }
+
+        goToLogin()
     }
 
     private fun registerUser(email: String, pass: String) {
@@ -95,5 +97,13 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun verifyIsNotEmptyOrNull(email: String, pass: String, pass2: String) : Boolean {
         return email.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty() && pass2.isNotEmpty()
+    }
+
+    private fun goToLogin() {
+        registerBinding.tvLinkIniciarSesion.setOnClickListener {
+            intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }
