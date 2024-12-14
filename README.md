@@ -6,6 +6,22 @@
 | Curso      | 2º DAM (A)           |
 
 ---
+## Version 1.3. Descripción General
+
+La aplicación `AquaSmart` se ha actualizado a la versión 1.3.
+En esta versión se ha implementado un sistema de Login con Firebase.
+
+### 1. Formulario de Registro
+
+Se ha incluido un nuevo formulario de registro para la creación de nuevos usuarios que 
+puedan acceder a la app. 
+
+<div>
+<p style = 'text-align:center;'>
+<img src="img%2Fregister.png" alt="RecyclerView Aquasmart" width="300px">
+</p>
+</div>
+
 
 ## Version 1.2. Descripción General
 
@@ -22,7 +38,7 @@ Se ha implementado la funcionalidad de añadir un Reporte, al hacer click en el 
 <p style = 'text-align:center;'>
 <img src="img%2Ffab_add.png" alt="RecyclerView Aquasmart" width="300px">
 </p>
-</div>**
+</div>
 
 En el Diálogo para añadir un reporte se introducen los datos necesarios para la creación del mismo.
 Es necesario que el usuario introduzca todos los datos.
